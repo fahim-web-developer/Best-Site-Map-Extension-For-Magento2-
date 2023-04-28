@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Sachindra Awasthi
+ * @copyright Copyright (c) 2022 Fahim (https://www.Fahimwebtechnology.com/)
+ * @package Fahim_SiteMap
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Fahim\SiteMap\Block\ItemsCollection" name="custom_block_top" as="custom_block_top" template="Fahim_SiteMap::custom_top.phtml" before="-"/>
+        </referenceBlock>
+        <referenceBlock name="footer_links">            
+            <block class="Fahim\SiteMap\Block\ItemsCollection" name="custom_block" as="custom_block" template="Fahim_SiteMap::custom.phtml" after="-"/>
+        </referenceBlock>
+    </body>
+</page>

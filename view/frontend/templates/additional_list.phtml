@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author Sachindra Awasthi
+ * @copyright Copyright (c) 2022 Fahim (https://www.Fahimwebtechnology.com/)
+ * @package Fahim_SiteMap
+ */
+?>
+<?php
+/**
+ * SEO Toolbar template
+ *
+ * @var $block Fahim\SiteMap\Block\ItemsCollection
+ */
+?>
+<?php
+    $helper = $block->getHelper();
+    //Additional Link
+    $additionUrl = $helper->getAdditionUrl();
+    $titleAddition = $helper->titleAddition();
+    $openNewTab = $helper->openNewTab();
+    $additionUrlCount = $additionUrl;
+
+    $additionLink = $block->getAdditionLink();
+    if ($additionUrlCount != null) : ?>
+        <h2 class="Fahim_h2"><?php echo $titleAddition; ?></h2>
+        <div class="Fahim_site_map_grid">
+        <?php
+        foreach ($additionLink as $value => $link) : ?>
+            <?php
+            if ($value % 2 == 1) : ?>
+                    <div class="col-Fahim-3"><h3 class="Fahim_product_list">
+                    <a href="<?php echo $link; ?>"
+                <?php
+            else :
+                ?> title="<?php echo $link; ?>"
+                <?php
+                if ($openNewTab == 1) {
+                    echo 'target="_blank"';
+                } ?>><?php echo $link; ?></a>
+                    </h3></div>
+                <?php
+            endif; ?>
+            <?php
+        endforeach; ?>
+        </div>
+<?php endif;

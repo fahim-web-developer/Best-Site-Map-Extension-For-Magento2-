@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author Sachindra Awasthi
+ * @copyright Copyright (c) 2022 Fahim (https://www.Fahimwebtechnology.com/)
+ * @package Fahim_SiteMap
+ */
+?>
+<?php
+/**
+ * SEO Toolbar template
+ *
+ * @var $block Fahim\SiteMap\Block\ItemsCollection
+ */
+?>
+<?php
+$helper = $block->getHelper();
+$baseUrl = $helper->getBaseUrl();
+$getEnable = $helper->isEnable();
+$urlKey = $helper->getModuleRoute();
+$titleSiteMap = $helper->getTitleSiteMap();
+$showLinkAt = $helper->getShowLinkAt();
+?>
+<?php if ($getEnable && $showLinkAt !== 'top') : ?>
+    <li class="nav item">
+        <a href="<?php echo $baseUrl . $urlKey; ?>"><?php echo $block->escapeHtml($titleSiteMap); ?></a>
+    </li>
+    <?php
+endif;

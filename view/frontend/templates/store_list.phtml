@@ -1,0 +1,54 @@
+<?php
+/**
+ * @author Sachindra Awasthi
+ * @copyright Copyright (c) 2022 Fahim (https://www.Fahimwebtechnology.com/)
+ * @package Fahim_SiteMap
+ */
+?>
+<?php
+/**
+ * SEO Toolbar template
+ *
+ * @var $block Fahim\SiteMap\Block\ItemsCollection
+ */
+?>
+<?php
+$helper = $block->getHelper();
+
+//Store View Link
+$additionUrl = $helper->getAdditionUrl();
+$baseUrl = $helper->getBaseUrl();
+$enableStoreView = $helper->isEnableStoreView();
+$titleStore = $helper->titleStore();
+?>
+<?php
+if ($enableStoreView) : ?>
+    <h2 class="Fahim_h2"><?php echo $titleStore; ?></h2>
+    <div class="Fahim_site_map_grid">
+    <?php
+    foreach ($block->getGroups() as $group) : ?>
+        <div class="Fahim_h3">
+            <a href="<?php echo $baseUrl; ?>"
+               data-post='<?php echo $block->getTargetStorePostData($group->getDefaultStore()); ?>'>
+                <?php echo $block->escapeHtml($group->getName()) ?>
+            </a>
+        </div>
+        <br/>
+        <?php foreach ($group->getStores() as $lang): ?>
+            <?php if (!$lang->isActive()): ?>
+                <?php continue; ?>
+            <?php endif; ?>
+            <div class="col-Fahim-3">
+                <h3 class="Fahim_product_list view-<?= $block->escapeHtml($lang->getCode()) ?>">
+                    <a href="<?= $block->escapeUrl($block->getTargetStoreRedirectUrl($lang)) ?>">
+                        <?= $block->escapeHtml($lang->getName()) ?>
+                    </a>
+                </h3>
+            </div>
+        <?php endforeach; ?>
+
+        <?php
+    endforeach; ?>
+    </div>
+    <?php
+endif; ?>
